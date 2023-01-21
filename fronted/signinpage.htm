@@ -11,13 +11,14 @@
 </head>
 
 <body>
+  <p id="msg" style="font-size: large; background-color: red;"></p>
   <div id="card">
     <div id="card-content">
       <div id="card-title">
         <h2>SignUp</h2>
         <div class="underline-title"></div>
       </div>
-      <form  action="#" class="form">
+      <form  action="#" method="post" class="form">
         <label for="user-name" style="padding-top:13px">
             &nbsp;Username
           </label>
@@ -31,16 +32,18 @@
         </label>
       <input id="user-password" class="form-content" type="password" name="password" required />
       <div class="form-border"></div>
-        <a href="#">
+        <!-- <a href="#">
           <legend id="forgot-pass">Forgot password?</legend>
-        </a>
-        <input id="submit-btn" type="submit" name="submit" value="SignUp" />
-        <a href="#" id="signup">Don't have account yet?</a>
+        </a> -->
+         <input id="submit-btn" type="submit" name="submit" value="SignUp" />
+        <input id="login-btn" type="submit" name="login" value="LogIn" />
+        <!--<a href="#" id="signup">LogIn</a> -->
       </form>
     </div>
   </div>
- 
+  
 </body>
+
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/fronted/signin.js"></script>
 </html>

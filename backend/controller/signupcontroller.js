@@ -1,9 +1,10 @@
 
+const Sequelize=require('sequelize');
 const usermodule=require('../module/usertable');
 
+
 exports.addpostdata=(async(req,res,next)=>{
-    // const {uname,uemail,upassword}=req.body;
-    //console.log("emildi"+req.body.emailid);
+
    await usermodule.count({where:{useremailid:req.body.emailid}})
     .then(count=>{
         console.log('cout'+count);
@@ -54,4 +55,42 @@ exports.addpostdata=(async(req,res,next)=>{
     // }catch (error) {
     //    console.log("errrp------"+error);
     // }
+});
+
+
+exports.logincred=(async(req,res,next)=>{
+    console.log("email"+req.body.emailid);
+    console.log("password"+req.body.password);
+try {
+    
+
+    const {count}=await usermodule.findAndCountAll({where:{useremailid:req.body.emailid}});
+    console.log("count"+count);
+    if(count>0)
+    {
+        const isvaliduser= await usermodule.findAndCountAll({
+            where: Sequelize.and(
+                { useremailid: req.body.emailid },
+                { userpass: req.body.password}
+            )})
+            console.log("abc count"+isvaliduser.count);
+            
+        if(isvaliduser.count)
+        {
+            return res.json("Login Successfull");
+        }
+        else
+        {
+            return res.json("Somewent wrong!!");
+        }
+        
+    }
+    else
+    {
+        return res.json("Emailid does not exits");
+    }
+} catch (error) {
+    console.log(error);
+}
+   
 });

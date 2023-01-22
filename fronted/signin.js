@@ -7,13 +7,12 @@ submit.addEventListener('click',signup);
 {
     try {
         
-        event.preventDefault();
-        
+       
         const username=document.getElementById('user-name').value.trim();
         const emailid=document.getElementById("user-email").value.trim();
         const password=document.getElementById("user-password").value.trim();
         console.log(username+" "+emailid+" "+password); 
-
+        event.preventDefault();
         if(username!=="" && username!==undefined && emailid!=="" && emailid!==undefined && password!=="" && password!==undefined)
         {
         
